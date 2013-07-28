@@ -1,7 +1,7 @@
 django-livinglots-usercontent
 ==============
 
-A set of apps for generically storing user content on other models.
+A set of Django apps for generically storing user content on other models.
 
 
 License
