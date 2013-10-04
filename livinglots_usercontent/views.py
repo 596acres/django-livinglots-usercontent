@@ -18,7 +18,7 @@ class AddContentView(FormValidMessageMixin, AddGenericMixin, CreateView):
 
     def get_template_names(self):
         return [
-            'livinglots/content/add_%s.html' % self._get_content_name().lower(),
+            'livinglots/usercontent/add_%s.html' % self._get_content_name().lower(),
         ]
 
     def form_valid(self, form):
