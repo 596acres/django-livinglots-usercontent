@@ -3,8 +3,9 @@ from django.utils.safestring import mark_safe
 
 
 class BaseUserContentAdmin(admin.ModelAdmin):
+    exclude = ('content_type', 'object_id',)
     list_filter = ('added',)
-    readonly_fields = ('added', 'content_type', 'object_id',)
+    readonly_fields = ('added',)
 
     def linked_target(self, user_content):
         if not user_content.content_object:
