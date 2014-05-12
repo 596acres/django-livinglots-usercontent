@@ -9,6 +9,7 @@ class PhotoAdmin(admin.ModelAdmin):
     admin_thumbnail = AdminThumbnail(image_field='thumbnail')
     list_display = ('name', 'admin_thumbnail', 'added_by_name', 'added',)
     list_filter = ('added',)
+    readonly_fields = ('content_type', 'object_id',)
     search_fields = ('name', 'added_by_name',)
 
 
