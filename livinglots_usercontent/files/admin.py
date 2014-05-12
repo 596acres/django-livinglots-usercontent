@@ -5,7 +5,7 @@ from .models import File
 
 
 class FileAdmin(BaseUserContentAdmin):
-    list_display = ('title', 'added_by_name', 'added',)
+    list_display = ('title', 'added_by_name', 'added', 'linked_target',)
     search_fields = ('title', 'description', 'added_by_name',)
 
 

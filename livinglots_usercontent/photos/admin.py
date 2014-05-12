@@ -8,7 +8,8 @@ from .models import Photo
 
 class PhotoAdmin(BaseUserContentAdmin):
     admin_thumbnail = AdminThumbnail(image_field='thumbnail')
-    list_display = ('pk', 'name', 'admin_thumbnail', 'added_by_name', 'added',)
+    list_display = ('pk', 'name', 'admin_thumbnail', 'added_by_name', 'added',
+                    'linked_target',)
     search_fields = ('name', 'added_by_name',)
 
 
