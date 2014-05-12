@@ -1,12 +1,11 @@
 from django.contrib import admin
 
+from ..admin import BaseUserContentAdmin
 from .models import Note
 
 
-class NoteAdmin(admin.ModelAdmin):
+class NoteAdmin(BaseUserContentAdmin):
     list_display = ('added_by_name', 'text', 'added',)
-    list_filter = ('added',)
-    readonly_fields = ('added', 'content_type', 'object_id',)
     search_fields = ('text', 'added_by_name',)
 
 
