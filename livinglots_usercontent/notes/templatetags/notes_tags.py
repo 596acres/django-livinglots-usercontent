@@ -16,6 +16,9 @@ register = template.Library()
 class RenderNoteList(RenderGenericRelationList):
     model = Note
 
+    def get_objects(self, target):
+        return super(RenderNoteList, self).get_objects(target).order_by('-added')
+
 register.tag(RenderNoteList)
 
 
