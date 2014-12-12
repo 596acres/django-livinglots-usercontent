@@ -68,6 +68,8 @@ class RenderUserContent(InclusionTag):
 
     def get_context(self, context, usercontent, **kwargs):
         context.update({
+            'app_name': usercontent._meta.app_label,
+            'model_name': usercontent._meta.object_name.lower(),
             'obj': usercontent,
             usercontent._meta.object_name.lower(): usercontent,
         })
