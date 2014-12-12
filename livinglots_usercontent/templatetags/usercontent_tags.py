@@ -21,6 +21,27 @@ from ..photos.models import Photo
 register = template.Library()
 
 
+class AdminActions(InclusionTag):
+    options = Options(
+        Argument('usercontent', required=True, resolve=True)
+    )
+    template = 'livinglots/usercontent/admin_actions.html'
+
+    def get_context(self, context, usercontent, **kwargs):
+        app_name = usercontent._meta.app_label
+        model_name = usercontent._meta.object_name.lower()
+        context.update({
+            'app_name': app_name,
+            'change_perm': '%s.change_%s' % (app_name, model_name,),
+            'change_url_name': 'admin:%s_%s_change' % (app_name, model_name,),
+            'delete_perm': '%s.delete_%s' % (app_name, model_name,),
+            'delete_url_name': 'admin:%s_%s_delete' % (app_name, model_name,),
+            'model_name': model_name,
+            'obj': usercontent,
+        })
+        return context
+
+
 class AllUserContentMixin(object):
     models = (File, Note, Photo,)
 
@@ -67,6 +88,7 @@ class RenderUserContentList(AllUserContentMixin, RenderGenericRelationList):
         return 'usercontent'
 
 
+register.tag(AdminActions)
 register.tag(GetUserContentList)
 register.tag(RenderUserContent)
 register.tag(RenderUserContentList)
