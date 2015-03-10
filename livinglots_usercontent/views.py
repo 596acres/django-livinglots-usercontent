@@ -27,6 +27,7 @@ class AddContentView(FormValidMessageMixin, AddGenericMixin, CreateView):
         lot.
         """
         self.object = form.save()
-        # TODO as signals?
-        #notify_participants_new_obj(self.object)
+
+        # NB: Notifications are sent to followers using a descendant of
+        # NotifyParticipantsOnCreationForm 
         return super(AddContentView, self).form_valid(form)
