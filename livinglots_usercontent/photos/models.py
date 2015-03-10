@@ -34,4 +34,6 @@ class Photo(models.Model):
                                      null=True, blank=True)
 
     def __unicode__(self):
-        return self.name
+        if self.name:
+            return self.name
+        return u'%d' % self.pk

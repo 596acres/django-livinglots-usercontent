@@ -20,4 +20,6 @@ class File(models.Model):
                                      null=True, blank=True)
 
     def __unicode__(self):
-        return self.title
+        if self.title:
+            return self.title
+        return u'%d' % self.pk
