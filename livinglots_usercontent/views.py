@@ -13,6 +13,17 @@ class AddContentView(FormValidMessageMixin, AddGenericMixin, CreateView):
     def get_form_valid_message(self):
         return '%s added successfully.' % self._get_content_name()
 
+    def get_initial(self):
+        initial = super(AddContentView, self).get_initial()
+        user = self.request.user
+
+        # If user has name, set that for them
+        try:
+            initial['added_by_name'] = user.first_name or user.username
+        except AttributeError:
+            pass
+        return initial
+
     def get_success_url(self):
         return self.get_content_object().get_absolute_url()
 
