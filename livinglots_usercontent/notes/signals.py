@@ -16,7 +16,8 @@ try:
 
     @receiver(pre_save, sender=Note, dispatch_uid='note.to_markdown')
     def to_markdown(sender, instance=None, **kwargs):
-        if not instance: return
+        # Only convert notes the first time they're saved
+        if not instance or instance.pk: return
         instance.text = text_to_markdown(instance.text)
 except ImportError:
     pass
