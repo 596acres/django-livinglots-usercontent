@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from imagekit.models import ImageSpecField
+from imagekit.processors import Transpose
 from imagekit.processors.resize import SmartResize
 
 from ..models import ContentMixin
@@ -12,10 +13,11 @@ class Photo(ContentMixin, models.Model):
     formatted_image = ImageSpecField(
         format='JPEG',
         options={'quality': 90},
+        processors=[Transpose(),],
         source='original_image',
     )
     thumbnail = ImageSpecField(
-        [SmartResize(200, 200)],
+        processors=[SmartResize(200, 200), Transpose(),],
         format='JPEG',
         options={'quality': 90},
         source='original_image',
