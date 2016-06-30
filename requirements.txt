@@ -1,3 +1,4 @@
 Django>=1.7
+django-usercontent-genericviews==1.4.2
 django-usercontent-generictags==1.1
 git+git://github.com/matthewwithanm/django-imagekit/@261f16412763c69fba64f130c521192ad726d2c1

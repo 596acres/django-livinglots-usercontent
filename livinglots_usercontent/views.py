@@ -2,7 +2,7 @@ from django.views.generic import CreateView
 
 from braces.views import FormValidMessageMixin
 
-from livinglots_genericviews import AddGenericMixin
+from livinglots_genericviews.views import AddGenericMixin
 
 
 class AddContentView(FormValidMessageMixin, AddGenericMixin, CreateView):
