@@ -13,6 +13,11 @@ class AddContentView(FormValidMessageMixin, AddGenericMixin, CreateView):
     def get_form_valid_message(self):
         return '%s added successfully.' % self._get_content_name()
 
+    def get_form_kwargs(self):
+        kwargs = super(AddContentView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def get_initial(self):
         initial = super(AddContentView, self).get_initial()
         user = self.request.user

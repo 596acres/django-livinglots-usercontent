@@ -31,10 +31,15 @@ class ContentForm(forms.ModelForm):
     )
 
     def __init__(self, *args, **kwargs):
-        # add initial value for added_by based on the user kwarg
         kwargs['initial'] = kwargs.get('initial', {})
-        user = kwargs.get('user', None)
-        if not user or user.is_anonymous(): user = None
-        kwargs['initial']['added_by'] = user
+
+        # Add initial value for added_by based on the user kwarg
+        try:
+            user = kwargs['user']
+            del kwargs['user']
+            if not user.is_anonymous():
+                kwargs['initial']['added_by'] = user
+        except KeyError:
+            pass
 
         super(ContentForm, self).__init__(*args, **kwargs)
