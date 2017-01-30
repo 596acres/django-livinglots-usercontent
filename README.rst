@@ -3,6 +3,8 @@ django-livinglots-usercontent
 
 A set of Django apps for generically storing user content on other models.
 
+This module is part of the `Living Lots <https://github.com/596acres/django-livinglots>`_ ® framework by `596 Acres <https://596acres.org>`_ ®.
+
 
 Notes
 -----
